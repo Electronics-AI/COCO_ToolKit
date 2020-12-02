@@ -31,9 +31,9 @@ def get_categories_from_txt(categories_txt_path):
             return categories
 
         # if there is(are) nonexistent category(ies) in categories.txt file
-        nonexistent_categories_lines = [index for index, exists in enumerate(existence_list) if not exists]
-        raise Exception("Nonexistent categories found in categories.txt file."
-                        f"Check categories in line(s) {nonexistent_categories_lines} for correctness")
+        nonexistent_categories_lines = [index+1 for index, exists in enumerate(existence_list) if not exists]
+        raise Exception("Nonexistent categories found in categories.txt file. "
+                        f"Check category(ies) in line(s) {nonexistent_categories_lines} for correctness")
 
 
 def get_annotations_file_path(dataset_path, annotations_type, annotations_year):

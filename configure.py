@@ -61,6 +61,8 @@ class ConfigYAMLGenerator:
 
 
 def main():
+    from coco_toolkit.scripts.generate_dataset_yaml import generate_dataset_yaml
+
     config_args_parser = ConfigArgumentsParser()
     config_args = config_args_parser.parse_arguments()
 
@@ -68,9 +70,10 @@ def main():
     config_yaml_generator = ConfigYAMLGenerator(config_args, config_yaml_file_path)
     config_yaml_generator.generate_yaml_file()
 
+    generate_dataset_yaml(config_args)
+
 
 if __name__ == '__main__':
     main()
 
-# python configure.py --dataset_path ../Animals --categories_path ../Animals/categories.txt
 

@@ -19,7 +19,7 @@ class COCOAnnotationsDownloader:
     def download_annotations(self):
         if not self._annotations_exist():
             try:
-                print("Downloading COCO annotations...")
+                print("Downloading COCO annotations from COCO website...")
                 annotations_zip_content = urlopen(self._annotations_archive_url.format(self.__annotations_year)).read()
                 annotations_zip_file = ZipFile(io.BytesIO(annotations_zip_content))
                 annotations_zip_file.extractall(self.__dataset_path)

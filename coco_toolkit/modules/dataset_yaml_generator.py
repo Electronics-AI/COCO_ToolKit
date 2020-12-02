@@ -1,17 +1,16 @@
 import os
 import yaml
-from os.path import basename, normpath
 from os.path import join as join_paths
 
 
 class DatasetYAMLGenerator:
     __dataset_parts = ('val', 'train')
+    __yaml_file_name = "dataset.yaml"
 
     def __init__(self, dataset_path, categories, multiclass):
         self.__dataset_path = dataset_path
         self.__categories = categories
         self.__multiclass = multiclass
-        self.__yaml_file_name = f"{basename(normpath(dataset_path)).lower()}.yaml"
         self.__yaml_file_path = join_paths(dataset_path, self.__yaml_file_name)
 
     def _append_paths_to_yaml(self):

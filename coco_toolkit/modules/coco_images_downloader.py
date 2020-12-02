@@ -9,14 +9,14 @@ class COCOImagesDownloader:
     __dataset_parts = ('val', 'train')
     _images_info_getter = ImagesInformationGetter()
 
-    def __init__(self, dataset_path, categories, train_images, val_images):
+    def __init__(self, dataset_path, categories, train_images, val_images, batch_size):
         self.__images_folder_path = join_paths(dataset_path, "images")
         self.__labels_folder_path = join_paths(dataset_path, "labels")
         self.__dataset_path = dataset_path
         self.__categories = categories
         self.__amount_of_train_images = train_images
         self.__amount_of_val_images = val_images
-        self.__batch_size = 15
+        self.__batch_size = batch_size
 
     @staticmethod
     def _write_image(image_path, image_content):

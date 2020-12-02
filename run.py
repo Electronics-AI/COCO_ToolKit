@@ -34,11 +34,11 @@ class RunArgumentsParser:
                                        default=0,
                                        help="Amount of val images per category to download"
                                        )
-    _run_arguments_parser.add_argument("--batch",
+    _run_arguments_parser.add_argument("--web_batch",
                                        type=int,
                                        default=15,
-                                       help="Batch of images to download from COCO website at once."
-                                            "By default it's 15, but if you have fast internet"
+                                       help="Batch of images to download from COCO website at once. "
+                                            "By default it's 15 but if you have fast internet "
                                             "connection, you can choose higher value")
 
     def parse_arguments(self):
@@ -54,10 +54,6 @@ def execute_scripts():
     if run_arguments["all"] or run_arguments["make_dirs"]:
         from coco_toolkit.scripts.make_dataset_dir_structure import make_dirs
         make_dirs(config_yaml_params)
-
-    if run_arguments["all"] or run_arguments["generate_yaml"]:
-        from coco_toolkit.scripts.generate_dataset_yaml import generate_yaml
-        generate_yaml(config_yaml_params)
 
     if run_arguments["all"] or run_arguments["download_annotations"]:
         from coco_toolkit.scripts.download_coco_annotations import download_coco_annotations
