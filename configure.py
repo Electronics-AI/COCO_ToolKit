@@ -17,7 +17,7 @@ class ConfigArgumentsParser:
                                      )
     _config_args_parser.add_argument("--labels",
                                      type=str,
-                                     required=True,
+                                     default=None,
                                      help="Type of the labels to generate"
                                      )
     _config_args_parser.add_argument("--annotations_year",
@@ -31,7 +31,7 @@ class ConfigArgumentsParser:
                                      help="If multiclass is needed"
                                      )
 
-    _available_labels = ("yolo",)
+    _available_labels = ("yolo", None)
     _available_ants_years = (2017,)
 
     def _arguments_are_correct(self, config_args):

@@ -1,5 +1,6 @@
 import grequests
 from tqdm import tqdm
+from itertools import combinations
 from os.path import exists as path_exists
 from os.path import join as join_paths
 from .image_params_getters import ImagesInformationGetter
@@ -61,7 +62,7 @@ class COCOImagesDownloader:
             all_images_info = self._images_info_getter.get_images_info(dataset_part, category)
             part_of_images_info = self._get_part_of_images_info(all_images_info, amount_of_images)
             for idx in tqdm(range(0, len(part_of_images_info), self.__batch_size),
-                            desc=f"Downloading {dataset_part} set, {category} images, batch = {self.__batch_size}",
+                            desc=f"Downloading {dataset_part} set, {category} images, batch={self.__batch_size}",
                             unit=" batches"):
                 batch_of_images_info = part_of_images_info[idx:idx + self.__batch_size]
                 self._download_and_write_batch_of_images(dataset_part_images_path, batch_of_images_info)
