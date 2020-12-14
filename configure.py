@@ -71,6 +71,7 @@ def main():
     config_yaml_generator.generate_yaml_file()
 
     generate_dataset_yaml(config_args)
+    print("Configuration successfully done!")
 
 
 if __name__ == '__main__':
