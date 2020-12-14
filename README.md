@@ -68,8 +68,8 @@ python configure.py --dataset_path ../Animals --categories_path ../Animals/categ
 ## 3.0 Running
 1. Let's run our code!
 ```
-python run.py --all --train {images per category in train set to download} \
-                    --val {images per category in val set to download} \
+python run.py --all --train {images per category in the train set to download} \
+                    --val {images per category in the validation set to download} \
                     --web_batch {download images at once from COCO website}
 ```
 **Note:** --all argument is responsible for:
@@ -80,7 +80,7 @@ python run.py --all --train {images per category in train set to download} \
 
 For my dataset I want to:
 * Download 1000 images per category in the train set ("--train 1000" argument)
-* Download all images per category in the validation set ("--val -1 argument, -1 means download all the images)
+* Download all images per category in the validation set ("--val -1 argument", -1 means download all the images)
 * I have a good internet connection, so let's set the batch of images to download = 20 ("--web_batch 20" argument)  
 My run.py start looks like this:
 ```
