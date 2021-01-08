@@ -58,7 +58,7 @@ And here is my directory structure:
 ```                                                 
 2. Configure your dataset (You must be in the COCO_Toolkit directory)
 ```
-python configure.py --dataset_path {dataset folder path} --categories_path {categories.txt path} --labels {labels to generate}
+python configure.py --dataset_path=<dataset folder path> --categories_path=<categories.txt path> --labels=<labels to generate>
 ``` 
 For my directory structure configuration looks so:
 ```
@@ -68,9 +68,9 @@ python configure.py --dataset_path ../Animals --categories_path ../Animals/categ
 ## 3.0 Running
 1. Let's run our code!
 ```
-python run.py --all --train {images per category in the train set to download} \
-                    --val {images per category in the validation set to download} \
-                    --web_batch {download images at once from COCO website}
+python run.py [--all] --train=<images per category in the train set to download> \
+                      --val=<images per category in the validation set to download> \
+                      --web_batch=<download images at once from COCO website>
 ```
 **Note:** --all argument is responsible for:
 * Dataset directory structure generation (labels, images, train, val folders) 

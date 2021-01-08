@@ -1,5 +1,5 @@
 import os
-from os.path import join as join_paths
+from os.path import join as join_path
 
 
 class DatasetDirStructureMaker:
@@ -14,9 +14,9 @@ class DatasetDirStructureMaker:
         return dataset_path
 
     def make_dataset_dir_tree(self):
-        os.makedirs(join_paths(self.__dataset_path, "annotations"), exist_ok=True)
+        os.makedirs(join_path(self.__dataset_path, "annotations"), exist_ok=True)
 
         for dataset_part_folder_name in self.__dataset_parts:
-            os.makedirs(join_paths(self.__dataset_path, f"images/{dataset_part_folder_name}"), exist_ok=True)
-            os.makedirs(join_paths(self.__dataset_path, f"labels/{dataset_part_folder_name}"), exist_ok=True)
+            os.makedirs(join_path(self.__dataset_path, f"images/{dataset_part_folder_name}"), exist_ok=True)
+            os.makedirs(join_path(self.__dataset_path, f"labels/{dataset_part_folder_name}"), exist_ok=True)
 

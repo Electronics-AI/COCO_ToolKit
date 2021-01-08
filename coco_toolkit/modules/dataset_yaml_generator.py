@@ -1,6 +1,6 @@
 import os
 import yaml
-from os.path import join as join_paths
+from os.path import join as join_path
 
 
 class DatasetYAMLGenerator:
@@ -11,11 +11,11 @@ class DatasetYAMLGenerator:
         self.__dataset_path = dataset_path
         self.__categories = categories
         self.__multiclass = multiclass
-        self.__yaml_file_path = join_paths(dataset_path, self.__yaml_file_name)
+        self.__yaml_file_path = join_path(dataset_path, self.__yaml_file_name)
 
     def _append_paths_to_yaml(self):
         for dataset_part in self.__dataset_parts:
-            dataset_part_path = f"{join_paths(self.__dataset_path, 'images', dataset_part).replace(os.sep, '/')}/"
+            dataset_part_path = f"{join_path(self.__dataset_path, 'images', dataset_part).replace(os.sep, '/')}/"
             path = {dataset_part: dataset_part_path}
             with open(self.__yaml_file_path, "a") as yaml_file:
                 _ = yaml.dump(data=path, stream=yaml_file)

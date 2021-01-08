@@ -1,5 +1,5 @@
 import yaml
-from os.path import join as join_paths
+from os.path import join as join_path
 from os.path import exists as path_exists
 
 
@@ -37,8 +37,8 @@ def get_categories_from_txt(categories_txt_path):
 
 
 def get_annotations_file_path(dataset_path, annotations_type, annotations_year):
-    annotations_folder_path = join_paths(dataset_path, "annotations")
-    annotations_file_path = join_paths(annotations_folder_path,
+    annotations_folder_path = join_path(dataset_path, "annotations")
+    annotations_file_path = join_path(annotations_folder_path,
                                          f"{annotations_type}{str(annotations_year)}.json")
     if path_exists(annotations_file_path):
         return annotations_file_path

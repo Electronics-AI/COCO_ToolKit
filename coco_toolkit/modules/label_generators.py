@@ -1,5 +1,5 @@
 from os.path import exists as path_exists
-from os.path import join as join_paths
+from os.path import join as join_path
 from .image_params_getters import ImageAnnotationGetter, ImagesInformationGetter
 
 
@@ -9,8 +9,8 @@ class YOLOLabelGenerator:
     _images_info_getter = ImagesInformationGetter()
 
     def __init__(self, dataset_path, categories, multiclass):
-        self.__images_folder_path = join_paths(dataset_path, "images")
-        self.__labels_folder_path = join_paths(dataset_path, "labels")
+        self.__images_folder_path = join_path(dataset_path, "images")
+        self.__labels_folder_path = join_path(dataset_path, "labels")
         self.__dataset_path = dataset_path
         self.__categories = categories
         self.__multiclass = multiclass
@@ -55,26 +55,26 @@ class YOLOLabelGenerator:
                                                                                 category_id=category_id,
                                                                                 iscrowd=None)
         label_file_name = f"{image_info['file_name'].split('.')[0]}.txt"
-        label_file_path = join_paths(labels_folder_path, label_file_name)
+        label_file_path = join_path(labels_folder_path, label_file_name)
 
         for object_annotation in image_annotations:
             coco_bbox = object_annotation['bbox']
             self._write_label_to_txt_file(label_file_path, category_number, image_size, coco_bbox)
 
     @staticmethod
-    def _such_an_image_exists(dataset_part_images_path, image_name):
-        return path_exists(join_paths(dataset_part_images_path, image_name))
+    def _image_is_in_images_folder(dataset_part_images_path, image_name):
+        return path_exists(join_path(dataset_part_images_path, image_name))
 
     def _generate_labels_for_dataset_part(self, dataset_part):
-        dataset_part_images_path = join_paths(self.__images_folder_path, dataset_part)
-        dataset_part_labels_path = join_paths(self.__labels_folder_path, dataset_part)
-        category_number = 0
+        dataset_part_images_path = join_path(self.__images_folder_path, dataset_part)
+        dataset_part_labels_path = join_path(self.__labels_folder_path, dataset_part)
 
+        category_number = 0
         for category in self.__categories:
             category_id = self._image_annotation_getter.get_category_id(dataset_part, category)
             images_info = self._images_info_getter.get_images_info(dataset_part, category)
             for image_info in images_info:
-                if self._such_an_image_exists(dataset_part_images_path, image_info["file_name"]):
+                if self._image_is_in_images_folder(dataset_part_images_path, image_info["file_name"]):
                     self._convert_and_write_labels(dataset_part_labels_path, dataset_part,
                                                    image_info, category_number, category_id)
             if not self.__multiclass:

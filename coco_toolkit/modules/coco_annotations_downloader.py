@@ -2,7 +2,7 @@ import io
 import os
 from urllib.request import urlopen
 from zipfile import ZipFile
-from os.path import join as join_paths
+from os.path import join as join_path
 
 
 class COCOAnnotationsDownloader:
@@ -10,7 +10,7 @@ class COCOAnnotationsDownloader:
 
     def __init__(self, dataset_path, annotations_year):
         self.__dataset_path = dataset_path
-        self.__annotations_folder_path = join_paths(self.__dataset_path, "annotations")
+        self.__annotations_folder_path = join_path(self.__dataset_path, "annotations")
         self.__annotations_year = annotations_year
 
     def _annotations_exist(self):
