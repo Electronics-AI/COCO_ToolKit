@@ -80,7 +80,7 @@ class YOLOLabelGenerator:
             if not self.__multiclass:
                 category_number += 1
 
-    def generate_labels_for_dataset_part(self):
+    def generate_labels(self):
         print("Generating YOLO labels...")
         for dataset_part in self.__dataset_parts:
             self._generate_labels_for_dataset_part(dataset_part)
