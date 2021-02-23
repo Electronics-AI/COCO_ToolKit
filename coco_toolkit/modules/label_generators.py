@@ -38,7 +38,6 @@ class YOLOLabelGenerator:
         return norm_x, norm_y, norm_w, norm_h
 
     def _write_label_to_txt_file(self, label_file_path, category_number, image_size, coco_bbox):
-        self._clean_file_content(label_file_path)
         yolo_bbox = self._convert_bbox_coco2yolo(image_size, coco_bbox)
         labels_file_content = "{} {} {} {} {}\n".format(category_number,
                                                         yolo_bbox[0], yolo_bbox[1],
@@ -56,6 +55,7 @@ class YOLOLabelGenerator:
                                                                                 iscrowd=None)
         label_file_name = f"{image_info['file_name'].split('.')[0]}.txt"
         label_file_path = join_path(labels_folder_path, label_file_name)
+        self._clean_file_content(label_file_path)
 
         for object_annotation in image_annotations:
             coco_bbox = object_annotation['bbox']
